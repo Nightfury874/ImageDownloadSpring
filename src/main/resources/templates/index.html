@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Image Download</title>
+    <style>
+        .message {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+        }
+
+        .error {
+            background-color: #f44336; /* Red background */
+            color: white; /* White text */
+        }
+    </style>
 </head>
 <body>
+<form action="/download" method="post">
+    <label for="url">Image URL:</label>
+    <input type="text" id="url" name="url" required>
+    <input type="submit" value="Download">
+</form>
 
+<!-- Success Message -->
+<div th:if="${success}" class="message success">
+    Congrats! Your image has been downloaded.
+</div>
+
+<!-- Error Message -->
+<div th:if="${error}" class="message error" th:text="${error}"></div>
 </body>
 </html>
